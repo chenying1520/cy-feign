@@ -8,8 +8,6 @@ import feign.Target;
 
 import java.lang.reflect.Method;
 import java.net.URI;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 /**
  * 用来控制 hystrix 运行时的参数配置，可自定义
@@ -40,9 +38,17 @@ public interface InvocationRuntimeSetterFactory {
       String groupKey = target.name();
       String commandKey = Feign.configKey(target.type(), method);
 
-      Optional<Object> anyUri = Stream.of(args).findAny();
-      if (anyUri.isPresent()) {
-        URI uri = (URI) anyUri.get();
+      Object anyUri = null;
+      if(args != null && args.length > 0) {
+        for (Object arg : args) {
+          if(arg instanceof URI) {
+            anyUri = arg;
+          }
+        }
+      }
+
+      if (anyUri != null) {
+        URI uri = (URI) anyUri;
         groupKey = groupKey + "#" + uri.toString();
         commandKey = commandKey + "#" + uri.toString();
       }
