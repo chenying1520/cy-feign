@@ -59,7 +59,7 @@ public class SetterFactoryTest {
 
     server.enqueue(new MockResponse().setResponseCode(500));
 
-    InvocationRuntimeSetterFactory commandKeyIsRequestLine = (target, proxy, method, args) -> {
+    InvocationRuntimeSetterFactory invocationRuntimeSetterFactory = (target, proxy, method, args) -> {
       String groupKey = target.name();
       String commandKey = Feign.configKey(target.type(), method);
       Object anyUri = null;
@@ -82,7 +82,7 @@ public class SetterFactoryTest {
     };
 
     TestInterface api = HystrixFeign.builder()
-            .invocationRuntimeSetterFactory(commandKeyIsRequestLine)
+            .invocationRuntimeSetterFactory(invocationRuntimeSetterFactory)
             .target(TestInterface.class, "test");
 
     api.invoke(new URI("http://localhost:" + server.getPort()));
