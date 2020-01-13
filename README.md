@@ -4,8 +4,6 @@
 # 解决方案
   根据运行时参数，动态设置 commandKey，从而实现熔断隔离。
 # 快速开始
-  你可以扩展 InvocationRuntimeSetterFactory 接口提供的方法，自定义 Hystrix Command 属性
-  
  依赖引入：
 ```
 <dependency>
@@ -25,7 +23,7 @@
     <version>9.5.0</version>
 </dependency>
 ```
- 使用：
+你可以扩展 InvocationRuntimeSetterFactory 接口提供的方法，自定义 Hystrix Command 属性
 ```
 TestInterface api = HystrixFeign.builder()
          .invocationRuntimeSetterFactory(invocationRuntimeSetterFactory)
