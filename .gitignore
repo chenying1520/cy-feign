@@ -1,0 +1,17 @@
+# intellij files
+.idea/
+*.iml
+build-idea/
+
+# eclipse files
+.project
+.classpath
+.settings
+build-eclipse/
+
+# maven stuff
+target/
+#dependency-reduced-pom.xml
+
+.DS_Store
+
