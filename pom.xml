@@ -28,7 +28,7 @@
         <okhttp3.version>3.6.0</okhttp3.version>
         <gson.version>2.5</gson.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <!-- last version supporting JDK 7 -->
         <assertj.version>1.7.1</assertj.version>
         <jackson.version>2.6.4</jackson.version>
